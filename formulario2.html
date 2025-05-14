@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="jquery-3.7.1.min.js"></script>
+  </head>
+  <body>
+    <div>
+      <h1>Formulario 2</h1>
+      <hr />
+      <input type="text" name="txtNombre" id="txtNombre" placeholder="Ingrese Nombre" />
+      <input type="text" name="txtNota" id="txtNota" placeholder="Ingrese nota" />
+      <select name="cbxCurso" id="cbxCurso">
+        <option value="0">Seleccione Curso</option>
+        <option value="1">Java Oracle</option>
+        <option value="2">Ing. de Software</option>
+        <option value="3">Backend</option>
+      </select>
+      <button id="btnProcesar">Procesar</button>
+      <div id="res">
+        <!--AQUI SE RELLENA NUESTRA RESPUESTA AJAX-->
+      </div>
+    </div>
+  </body>
+</html>
+<script>
+  $("#btnProcesar").click(function () {
+    nombre = $('#txtNombre').val();
+    nota = $('#txtNota').val();
+    curso = $('#cbxCurso').val();
+    datos = {'nombre':nombre,'nota':nota,'curso':curso};
+    $.ajax({
+      data: datos,
+      url: 'formulario2.php',
+      type: 'get',
+      success: function (res) {
+        $('#res').html(res);
+      },
+    });
+  });
+</script>

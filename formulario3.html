@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <div>
+        <h3>Formulario 3</h3>
+        <hr>
+        
+        <input type="text" name="txtF1" id="txtF1" placeholder="Factor 1">
+        
+        <button id="btnProcesar">Procesar</button>
+        <div id="res">Tabla</div>
+        
+    </div>
+</body>
+</html>
+<script>
+  $("#btnProcesar").click(function () {
+    f1 = $('#txtF1').val();
+    datos = {'f1':f1};
+    $.ajax({
+      data: datos,
+      url: 'formulario3.php',
+      type: 'get',
+      success: function (res) {
+        $('#res').html(res);
+      },
+    });
+  });
+</script>
